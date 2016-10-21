@@ -25,7 +25,7 @@ object SimpleApp {
       map(k => (k, 1)).reduceByKey((a,b) => a+b).sortByKey()
     println("wordCounts")
     wordCounts.take(10).foreach(println)
-    wordCounts.saveAsTextFile("data/output/word_counts")
+//    wordCounts.saveAsTextFile("data/output/word_counts")
 
     val numAs = logData.filter(line => line.contains("a")).count()
 //    val numBs = logData.filter(line => line.contains("b")).count()
@@ -36,6 +36,18 @@ object SimpleApp {
     val data = Array(1, 2, 3)
     val distData = sc.parallelize(data)
     distData.take(10).foreach(println)
+
+
+    // broadcast
+    val broadcastVar = sc.broadcast(2)
+    distData.foreach(x => println("x = %s, broadcastVar = %s".format(x, broadcastVar.value)))
+    println("broadcast %s".format(broadcastVar.value))
+
+    // accumulator
+    val accum = sc.longAccumulator("My Accumulator")
+    distData.foreach(x => accum.add(x))
+    println("accum %s".format(accum.value))
+
   }
 }
 
