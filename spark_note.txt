@@ -38,3 +38,10 @@ In spark_proj base dir:
     export PATH=/Users/ruiwang/0_my_staff/apache-maven-3.3.9/bin:$PATH
     mvn package
     ~/0_my_staff/spark-2.1.0-bin-hadoop2.7/bin/spark-submit --master local[2] --class "SimpleApp" target/spark_proj-1.0.jar
+
+
+# -------------------
+# github
+git checkout -b local_branch_name
+git push origin local_branch_name
+git push origin local_branch_name:master
