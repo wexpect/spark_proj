@@ -1,25 +1,40 @@
 # -------------------
+Download spark
+    http://spark.apache.org/downloads.html
+
+
+
+# -------------------
 # spark-shell
-./spark-shell --master local[2]
+In spark_proj base dir:
+    ~/0_my_staff/spark-2.1.0-bin-hadoop2.7/bin/spark-shell --master local[2]
 
 
 http://10.0.0.11:4040/jobs/
 
+
 scala> :help
 
 var textFile = sc.textFile("/Users/ruiwang/0_my_staff/spark_proj/data/input/data.txt")
-
 var wordCounts = textFile.flatMap(line => line.split(" ")).map(k => (k, 1)).reduceByKey((a,b) => a+b)
-
 wordCounts.cache()
-
 wordCounts.collect()
+
+
+:quit
+
+
+
+
+# -------------------
+# IntelliJ
+Right click file, and "Run 'SimpleApp'"
 
 
 
 # -------------------
 # spark-submit
-
-export PATH=/Users/ruiwang/0_my_staff/apache-maven-3.3.9/bin:$PATH
-mvn package
-~/0_my_staff/spark-2.0.1-bin-hadoop2.7/bin/spark-submit --master local[2] --class "SimpleApp" target/spark_proj-1.0.jar
+In spark_proj base dir:
+    export PATH=/Users/ruiwang/0_my_staff/apache-maven-3.3.9/bin:$PATH
+    mvn package
+    ~/0_my_staff/spark-2.1.0-bin-hadoop2.7/bin/spark-submit --master local[2] --class "SimpleApp" target/spark_proj-1.0.jar
