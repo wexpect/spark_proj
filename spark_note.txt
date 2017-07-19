@@ -45,3 +45,5 @@ In spark_proj base dir:
 git checkout -b local_branch_name
 git push origin local_branch_name
 git push origin local_branch_name:master
+git pull
+
