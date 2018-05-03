@@ -1,0 +1,8 @@
+pip install py4j
+
+tar -xvzf spark-2.3.0-bin-hadoop2.7
+
+export SPARK_HOME=/Users/rui/0_my_staff/0_projects/spark-2.3.0-bin-hadoop2.7
+
+PYTHONPATH=$SPARK_HOME/python:. jupyter notebook
+
